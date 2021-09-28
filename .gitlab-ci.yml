@@ -1,0 +1,10 @@
+stages:
+  - build
+
+Buildimg:
+  stage: build
+  tags:
+    - sloganindo
+  script:
+    - docker build -t slogan .
+    
