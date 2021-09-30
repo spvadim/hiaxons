@@ -8,4 +8,7 @@ Buildimg:
   script:
 #    - docker build -t slogan .
     - echo OkOk
+
+
+
          
