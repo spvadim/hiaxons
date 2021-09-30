@@ -6,8 +6,8 @@ Buildimg:
   tags:
     - sloganindo
   script:
-#    - docker build -t slogan .
-    - echo OkOk
+    - docker build -t slogan .
+#    - echo OkOk
 
 
 
