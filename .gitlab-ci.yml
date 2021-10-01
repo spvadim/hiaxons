@@ -1,15 +1,21 @@
 stages:
   - build
+  - test
 
 Buildimg:
   stage: build
   tags:
     - sloganindo
   script:
-    - docker build -t slogan .
-    - docker ps
-#    - echo OkOk
+#    - docker build -t slogan .
+#    - docker ps
+    - echo OkOk
 
-
-
-         
+Test:
+  stage: test
+  tags:
+    - sloganindo
+  script:
+    - docker run -rm -e nicname="joe" -ti slogan | grep "hi"
+    
+       
