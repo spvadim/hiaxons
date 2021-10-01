@@ -16,6 +16,6 @@ Test:
   tags:
     - sloganindo
   script:
-    - docker run --rm -e nicname="joe" -ti slogan | grep "hi"
+    - docker run --rm -e nicname="joe" slogan | grep "hi"
     
        
