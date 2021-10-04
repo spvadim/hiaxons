@@ -1,6 +1,6 @@
 variables:
   dockerTag: '$CI_BUILD_REF'
-  DOCKER_REPO: registry
+  DOCKER_REPO: registry:5000
   IMAGE_BASE_NAME: slogan
   IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
 
@@ -32,6 +32,7 @@ RecordImg:
     - sloganindo
   script:
     - docker tag $IMAGE_BASE_NAME $IMAGE
+    - echo $IMAGE
     - docker push $IMAGE      
 #    - docker push $RELEASE_IMAGE      
     
