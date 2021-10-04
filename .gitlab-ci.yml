@@ -14,9 +14,9 @@ BuildImg:
   tags:
     - sloganindo
   script:
-#    - docker build -t $IMAGE_BASE_NAME .
-#    - docker ps
-    - echo OkOk
+    - docker build -t $IMAGE_BASE_NAME .
+    - docker ps
+#    - echo OkOk
 
 Test:
   stage: test
