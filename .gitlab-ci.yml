@@ -36,7 +36,7 @@ RecordImg:
 #    - docker tag $IMAGE_BASE_NAME $IMAGE
 #    - echo $IMAGE
     - docker tag $IMAGE_BASE_NAME $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7)
-    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$(cut -c 1-7 $CI_BUILD_REF)
+    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7 )
 
 #    - docker push $IMAGE      
 #    
