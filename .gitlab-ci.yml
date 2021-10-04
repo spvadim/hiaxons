@@ -1,13 +1,20 @@
+variables:
+  dockerTag: '$CI_BUILD_REF'
+  DOCKER_REPO: registry
+  IMAGE_BASE_NAME: slogan
+  IMAGE: $IMAGE_BASE_NAME:$CI_BUILD_REF
+
 stages:
   - build
   - test
+  - r12n
 
-Buildimg:
+BuildImg:
   stage: build
   tags:
     - sloganindo
   script:
-#    - docker build -t slogan .
+#    - docker build -t $IMAGE_BASE_NAME .
 #    - docker ps
     - echo OkOk
 
@@ -16,6 +23,16 @@ Test:
   tags:
     - sloganindo
   script:
-    - docker run --rm -e nicname="joe" slogan | grep "Hi"
+    - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
+    
+
+RecordImg:
+  stage: r12n
+  tags:
+    - sloganindo
+  script:
+    - docker tag $IMAGE_BASE_NAME $IMAGE
+    - docker push $IMAGE      
+#    - docker push $RELEASE_IMAGE      
     
        
