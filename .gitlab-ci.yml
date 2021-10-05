@@ -2,6 +2,7 @@ variables:
   dockerTag: '$CI_BUILD_REF'
   DOCKER_REPO: registry:5000
   IMAGE_BASE_NAME: slogan
+  STSERVER: 192.168.9.151
 #  IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
 
 stages:
