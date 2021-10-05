@@ -8,6 +8,7 @@ stages:
   - build
   - test
   - r12n
+  - dp2stage
 
 BuildImg:
   stage: build
@@ -43,4 +44,13 @@ RecordImg:
     - docker tag $IMAGE_BASE_NAME $RELEASE_IMAGE 
     - docker push $RELEASE_IMAGE      
     
+
+Deploy2stage:
+  stage: dp2stage
+  tags:
+    - sloganindo
+  script:
+    - ssh deploy@$STSERVER "docker pull $RELEASE_IMAGE"
+        
+  
        

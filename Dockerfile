@@ -28,7 +28,7 @@ ADD slogan.sh /usr/local/bin
 #USER plone
 
 
-ENTRYPOINT slogan.sh $nicname
+ENTRYPOINT slogan.sh $nicname && /bin/bash
 
 #ENTRYPOINT /etc/init.d/plone start && /bin/bash
 #ENTRYPOINT /opt/plone/zeocluster/bin/plonectl start && /bin/bash
