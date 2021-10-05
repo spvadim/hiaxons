@@ -47,6 +47,8 @@ RecordImg:
     
 
 Deploy2stage:
+  variables:
+    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
   stage: dp2stage
   tags:
     - sloganindo
