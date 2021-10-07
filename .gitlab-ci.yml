@@ -54,6 +54,6 @@ Deploy2stage:
     - sloganindo
   script:
     - echo $RELEASE_IMAGE
-    - ssh deploy@192.168.9.151 "docker pull $RELEASE_IMAGE"
+    - cd /home/deploy; ssh deploy@192.168.9.151 "docker pull $RELEASE_IMAGE"
   
        
