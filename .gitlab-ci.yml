@@ -55,6 +55,7 @@ Deploy2stage:
   tags:
     - sloganindo
   script:
+    - echo 123
     - echo $RELEASE_IMAGE
 #    - ssh deploy@192.168.9.151 "sudo -u deploy docker pull $RELEASE_IMAGE"
     - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "$RELEASE_IMAGE"
