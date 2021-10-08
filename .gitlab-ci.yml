@@ -3,6 +3,8 @@ variables:
   DOCKER_REPO: registry:5000
   IMAGE_BASE_NAME: slogan
   STSERVER: 192.168.9.151
+  RUNHOME: /home/gutlab-runner
+ 
 #  IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
 
 stages:
@@ -55,5 +57,5 @@ Deploy2stage:
   script:
     - echo $RELEASE_IMAGE
 #    - ssh deploy@192.168.9.151 "sudo -u deploy docker pull $RELEASE_IMAGE"
-    - ansible-playbook -i /home/deploy/ahosts /home/deploy/get_latest.yml --extra-vars "$RELEASE_IMAGE"
+    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "$RELEASE_IMAGE"
        
