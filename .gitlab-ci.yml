@@ -10,8 +10,8 @@ variables:
 stages:
   - build
   - test
-  - r12n
-  - dp2stage
+#  - r12n
+#  - dp2stage
 
 BuildImg:
   stage: build
@@ -30,33 +30,34 @@ Test:
     - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
     
 
-RecordImg:
-  variables:
-    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
-  stage: r12n
-  tags:
-    - sloganindo
-  script:
-#    - docker tag $IMAGE_BASE_NAME $IMAGE
-#    - echo $IMAGE
-    - docker tag $IMAGE_BASE_NAME $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7)
-    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7 )
-    - docker push $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7 )
-#    - docker push $IMAGE      
+#RecordImg:
+#  variables:
+#    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
+#  stage: r12n
+#  tags:
+#    - sloganindo
+#  script:
+##    - docker tag $IMAGE_BASE_NAME $IMAGE
+##    - echo $IMAGE
+#    - docker tag $IMAGE_BASE_NAME $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7)
+#    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7 )
+#    - docker push $DOCKER_REPO/$IMAGE_BASE_NAME:$(echo $CI_BUILD_REF | cut -c 1-7 )
+##    - docker push $IMAGE      
+##    
+#    - docker tag $IMAGE_BASE_NAME $RELEASE_IMAGE 
+#    - docker push $RELEASE_IMAGE      
 #    
-    - docker tag $IMAGE_BASE_NAME $RELEASE_IMAGE 
-    - docker push $RELEASE_IMAGE      
-    
-
-Deploy2stage:
-  variables:
-    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
-  stage: dp2stage
-  tags:
-    - sloganindo
-  script:
-    - echo 123
-    - echo $RELEASE_IMAGE
-#    - ssh deploy@192.168.9.151 "sudo -u deploy docker pull $RELEASE_IMAGE"
-    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "$RELEASE_IMAGE"
+#
+#Deploy2stage:
+#  variables:
+#    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
+#  stage: dp2stage
+#  tags:
+#    - sloganindo
+#  script:
+#    - echo 123
+#    - echo $RELEASE_IMAGE
+##    - ssh deploy@192.168.9.151 "sudo -u deploy docker pull $RELEASE_IMAGE"
+#    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "$RELEASE_IMAGE"
+#
        
