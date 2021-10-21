@@ -28,6 +28,7 @@ Test:
     - sloganindo
   script:
     - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
+
     
 
 #RecordImg:
