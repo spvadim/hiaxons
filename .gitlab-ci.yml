@@ -16,7 +16,7 @@ stages:
 BuildImg:
   stage: build
   tags:
-    - sloganindo
+    - sloganim
   script:
     - docker build -t $IMAGE_BASE_NAME .
     - docker images
@@ -25,7 +25,7 @@ BuildImg:
 Test:
   stage: test
   tags:
-    - sloganindo
+    - sloganim
   script:
     - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
 
