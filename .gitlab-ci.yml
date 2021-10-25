@@ -16,7 +16,7 @@ stages:
 BuildImg:
   stage: build
   tags:
-    - sloganim
+#    - sloganim
     - slogan4
   script:
     - docker build -t $IMAGE_BASE_NAME .
