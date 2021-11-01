@@ -10,7 +10,7 @@ variables:
 stages:
   - build
   - test
-#  - r12n
+  - r12n
 #  - dp2stage
 
 BuildImg:
