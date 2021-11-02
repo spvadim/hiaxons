@@ -50,6 +50,8 @@ RecordImg:
 #    - echo $CI_COMMIT_TAG    
     - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_COMMIT_TAG_$(echo $CI_BUILD_REF | cut -c 1-7 )
 
+#
+#
 #Deploy2stage:
 #  variables:
 #    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
