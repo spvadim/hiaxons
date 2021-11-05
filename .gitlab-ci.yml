@@ -50,7 +50,7 @@ RecordImg:
     - docker push $RELEASE_IMAGE      
 #
     - echo $PROD_VERSION    
-    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$PROG_VERSION_$(echo $CI_BUILD_REF | cut -c 1-7 )
+    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-7 )
 
 #
 #
