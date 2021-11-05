@@ -1,4 +1,5 @@
 variables:
+  PROD_VERSION: 3-2-15
   dockerTag: '$CI_BUILD_REF'
   DOCKER_REPO: registry:5000
   IMAGE_BASE_NAME: slogan
@@ -47,8 +48,9 @@ RecordImg:
 #    - docker push $IMAGE      
     - docker tag $IMAGE_BASE_NAME $RELEASE_IMAGE 
     - docker push $RELEASE_IMAGE      
-    - echo $CI_COMMIT_TAG    
-    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_COMMIT_TAG_$(echo $CI_BUILD_REF | cut -c 1-7 )
+#
+    - echo $PROD_VERSION    
+    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:$PROG_VERSION_$(echo $CI_BUILD_REF | cut -c 1-7 )
 
 #
 #
