@@ -10,6 +10,7 @@ RUN \
     apt-get -yqq install openssh-server;\
     apt-get -yqq install sudo;\
     apt-get -yqq install links2;\
+    apt-get -yqq install curl;\
     apt-get -yqq install netcat;
     
 
