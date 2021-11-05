@@ -1,6 +1,6 @@
 FROM visono/debian
 #FROM dokken/debian-10
-MAINTAINER Vadim Spirichev <z1326593@rambler.ru>
+MAINTAINER Vadim Spirichev <gas-eng@bk.ru>
 #
 RUN \
     apt-get -yqq update;\
