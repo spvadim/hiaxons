@@ -3,7 +3,7 @@ variables:
   dockerTag: '$CI_BUILD_REF'
   DOCKER_REPO: registry:5000
   IMAGE_BASE_NAME: slogan
-  STSERVER: 192.168.9.151
+#  STSERVER: 192.168.9.151
   RUNHOME: /home/gitlab-runner
  
 #  IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
@@ -56,16 +56,16 @@ RecordImg:
 
 #
 #
-#Deploy2stage:
-#  variables:
-#    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
-#  stage: dp2stage
-#  tags:
-#    - sloganindo
-#  script:
+Deploy2stage:
+  variables:
+    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
+  stage: dp2stage
+  tags:
+    - slogan6
+  script:
 #    - echo 123
 #    - echo $RELEASE_IMAGE
-##    - ssh deploy@192.168.9.151 "sudo -u deploy docker pull $RELEASE_IMAGE"
-#    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "$RELEASE_IMAGE"
-#
+#    - ssh deploy@192.168.9.151 "sudo -u deploy docker pull $RELEASE_IMAGE"
+    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "image=$RELEASE_IMAGE"
+
        
