@@ -65,7 +65,8 @@ Deploy2stage:
   script:
 #    - echo 123
 #    - echo $RELEASE_IMAGE
-#    - ssh deploy@192.168.9.151 "sudo -u deploy docker pull $RELEASE_IMAGE"
-    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "image=$RELEASE_IMAGE"
+#    - ssh deploy@192.168.9.148  "sudo -u deploy docker pull $RELEASE_IMAGE"
+    - ssh deploy@192.168.9.148  "docker pull registry:5000/slogan:latest"
+#    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "image=$RELEASE_IMAGE"
 
        
