@@ -3,7 +3,7 @@ variables:
   dockerTag: '$CI_BUILD_REF'
   DOCKER_REPO: registry:5000
   IMAGE_BASE_NAME: slogan
-#  STSERVER: 192.168.9.151
+  STAGE_SERVER: 192.168.9.148
   RUNHOME: /home/gitlab-runner
  
 #  IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
@@ -16,7 +16,7 @@ before_script:
   - chmod 700 ~/.ssh/id_rsa
   - eval "$(ssh-agent -s)"
   - ssh-add ~/.ssh/id_rsa
-  - ssh-keyscan -t rsa 192.168.9.148 > ~/.ssh/known_hosts
+  - ssh-keyscan -t rsa $STAGE_SERVER > ~/.ssh/known_hosts
   - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
   - chmod 644 ~/.ssh/known_hosts
 
@@ -80,7 +80,7 @@ Deploy2stage:
 #    - echo $RELEASE_IMAGE
 #    - ssh deploy@192.168.9.148  "sudo -u deploy docker pull $RELEASE_IMAGE"
 #    - ssh -o StrictHostKeyChecking=no deploy@192.168.9.148  "docker pull registry:5000/slogan:latest"
-    - ssh deploy@192.168.9.148  "docker pull registry:5000/slogan:latest"
+    - ssh deploy@$STAGE_SERVER  "docker pull registry:5000/slogan:latest"
 #    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "image=$RELEASE_IMAGE"
 
        
