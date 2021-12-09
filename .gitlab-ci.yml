@@ -16,6 +16,8 @@ variables:
   IMAGE_SHORT_DASHB: worker-dashboard
   IMAGE_SHORT_FASTAPI: backend 
   IMAGE_SHORT_WORKER: worker 
+  
+  MY_ARRAY: "VPN VPC LB DNS"
 
 #  IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
 
@@ -55,7 +57,7 @@ Test:
   script:
 #    - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
     - >
-      for i in $(NGINX BACKEND DASHB); do
+      for i in ${MY_ARRAY}; do
         echo "Hello $i"
       done
     
