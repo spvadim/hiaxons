@@ -61,6 +61,7 @@ Test:
     - >
       for i in ${IMG_ARRAY}; do
         echo "docker tag $IMAGE_BNAME$i $DOCKER_REPO/$i:$CI_BUILD_REF"
+        echo "docker push $DOCKER_REPO/$i:$CI_BUILD_REF"
       done
     
 #        echo "docker tag $IMAGE_BNAME$i $DOCKER_REPO/$i:$CI_BUILD_REF"
