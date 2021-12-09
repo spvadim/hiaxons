@@ -24,8 +24,8 @@ before_script:
 stages:
   - build
   - test
-  - r12n
-  - dp2stage
+#  - r12n
+#  - dp2stage
 
 BuildImg:
   stage: build
@@ -46,41 +46,42 @@ Test:
 
     
 
-RecordImg:
-  variables:
-    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
-  stage: r12n
-  tags:
-    - slogan6
-  script:
-#    - docker tag $IMAGE_BASE_NAME $IMAGE
-#    - echo $IMAGE
-    - docker tag $IMAGE_BASE_NAME $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-8)
-    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-8 )
+#RecordImg:
+#  variables:
+#    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
+#  stage: r12n
+#  tags:
+#    - slogan6
+#  script:
+##    - docker tag $IMAGE_BASE_NAME $IMAGE
+##    - echo $IMAGE
+#    - docker tag $IMAGE_BASE_NAME $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-8)
+#    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-8 )
+##
+##    - docker push $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-8 )
+##
+##    - docker push $IMAGE      
+##    - docker tag $IMAGE_BASE_NAME $RELEASE_IMAGE 
+##    - docker push $RELEASE_IMAGE      
+##
+##    - echo $PROD_VERSION    
+##    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-7 )
 #
-    - docker push $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-8 )
+##
+##
+#Deploy2stage:
+#  variables:
+#    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
+#  stage: dp2stage
+#  tags:
+#    - slogan6
+#  script:
+##    - echo 123
+##    - echo $RELEASE_IMAGE
+##    - ssh deploy@192.168.9.148  "sudo -u deploy docker pull $RELEASE_IMAGE"
+##    - ssh -o StrictHostKeyChecking=no deploy@192.168.9.148  "docker pull registry:5000/slogan:latest"
+#    - ssh deploy@$STAGE_SERVER  "docker pull registry:5000/slogan:latest"
+##    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "image=$RELEASE_IMAGE"
 #
-#    - docker push $IMAGE      
-    - docker tag $IMAGE_BASE_NAME $RELEASE_IMAGE 
-    - docker push $RELEASE_IMAGE      
 #
-#    - echo $PROD_VERSION    
-#    - echo $DOCKER_REPO/$IMAGE_BASE_NAME:${PROD_VERSION}_$(echo $CI_BUILD_REF | cut -c 1-7 )
-
-#
-#
-Deploy2stage:
-  variables:
-    RELEASE_IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:latest
-  stage: dp2stage
-  tags:
-    - slogan6
-  script:
-#    - echo 123
-#    - echo $RELEASE_IMAGE
-#    - ssh deploy@192.168.9.148  "sudo -u deploy docker pull $RELEASE_IMAGE"
-#    - ssh -o StrictHostKeyChecking=no deploy@192.168.9.148  "docker pull registry:5000/slogan:latest"
-    - ssh deploy@$STAGE_SERVER  "docker pull registry:5000/slogan:latest"
-#    - ansible-playbook -i $RUNHOME/ahosts $RUNHOME/get_latest.yml --extra-vars "image=$RELEASE_IMAGE"
-
        
