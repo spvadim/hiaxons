@@ -55,7 +55,7 @@ Test:
   script:
 #    - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
     - >
-      for i in $(seq NGINX BACKEND DASHB); do
+      for i in $(NGINX BACKEND DASHB); do
         echo "Hello $i"
       done
     
