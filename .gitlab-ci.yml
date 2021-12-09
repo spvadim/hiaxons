@@ -5,7 +5,18 @@ variables:
   IMAGE_BASE_NAME: slogan
   STAGE_SERVER: 192.168.9.148
   RUNHOME: /home/gitlab-runner
- 
+
+# 4 FOR test
+  IMAGE_BNAME_NGINX: gitlab.tn.ru:5000/xps/axon/wrkst/frontend
+  IMAGE_BNAME_DASHB: gitlab.tn.ru:5000/xps/axon/wrkst/worker-dashboard
+  IMAGE_BNAME_FASTAPI: gitlab.tn.ru:5000/xps/axon/wrkst/backend 
+  IMAGE_BNAME_WORKER: gitlab.tn.ru:5000/xps/axon/wrkst/worker
+
+  IMAGE_SHORT_NGINX: frontend
+  IMAGE_SHORT_DASHB: worker-dashboard
+  IMAGE_SHORT_FASTAPI: backend 
+  IMAGE_SHORT_WORKER: worker 
+
 #  IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
 
 
@@ -42,8 +53,11 @@ Test:
   tags:
     - slogan6
   script:
-    - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
-
+#    - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
+    - >
+      for i in $(seq NGINX BACKEND DASHB); do
+        echo "Hello $i"
+      done
     
 
 #RecordImg:
