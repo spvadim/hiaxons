@@ -12,12 +12,14 @@ variables:
   IMAGE_BNAME_FASTAPI: gitlab.tn.ru:5000/xps/axon/wrkst/backend 
   IMAGE_BNAME_WORKER: gitlab.tn.ru:5000/xps/axon/wrkst/worker
 
+  IMAGE_BNAME: gitlab.tn.ru:5000/xps/axon/wrkst/
+
   IMAGE_SHORT_NGINX: frontend
   IMAGE_SHORT_DASHB: worker-dashboard
   IMAGE_SHORT_FASTAPI: backend 
   IMAGE_SHORT_WORKER: worker 
   
-  MY_ARRAY: "VPN VPC LB DNS"
+  MY_ARRAY: "frontend worker-dashboard backend worker"
 
 #  IMAGE: $DOCKER_REPO/$IMAGE_BASE_NAME:$CI_BUILD_REF
 
@@ -58,7 +60,7 @@ Test:
 #    - docker run --rm -e nicname="joe" $IMAGE_BASE_NAME | grep "Hi"
     - >
       for i in ${MY_ARRAY}; do
-        echo "Hello $i"
+        echo "$IMAGE_BNAME$i"
       done
     
 
